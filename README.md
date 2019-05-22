@@ -16,11 +16,12 @@ It includes a Python Panel Interface the **Mutagen Viewer**, that allows you to 
 * Mark/label wedge variations you like, store selection
 * **Setup Mutation** tool to generate new base wedge node containing all wedge parameters from marked wedge variations. This can then be used as root to generate further wedge variation based on the settings you liked, by appending further wedge TOPs.
 
+ 
 
+<img src="./img/mutagen_shelf_network.png" alt="Mutagen Shelf / PDG Graph" width="882px">
 
 It also includes a **PDG Mutagen Shelf** containing additional utility tools
 
-<img src="./img/mutagen_shelf_network.png" alt="Mutagen Shelf / PDG Graph" width="882px">
 
 * **Mutagen Setup** creates a PDG graph template with basic wedging setup, designed to work with the **Mutagen Viewer** and other **Mutagen Tools**.
 * **Convert Takes to Wedges** converts variations you have set up in the "classical take style" to a single wedge TOP that holds all the edited parameters. Append additional wedge TOPs as you like to generate further variation
@@ -60,12 +61,12 @@ It may contain bugs and the code is not fully cleaned up. Feel free to customize
 
 <br>
 
-##Future Developement
+## Future Developement
 The intial intention was to create a "smart mutation" tool that will set up the PDG network based on the marked wedge variations automatically.
 Providing the user with parameters like "Number of New Variations", "Variation Spread", "Linear or Random Mode" and so on.
 Due to time constraints this is postponed indefinitely but may be continued in the future.
 
 <br>
 
-##Thanks
+## Thanks
 * [Entagma](http://www.entagma.com/) - **PDG for Design Work** series inspired to create the toolset
