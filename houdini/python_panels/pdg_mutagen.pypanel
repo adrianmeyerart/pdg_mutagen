@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pythonPanelDocument>
+  <!-- This file contains definitions of Python interfaces and the
+ interfaces menu.  It should not be hand-edited when it is being
+ used by the application.  Note, that two definitions of the
+ same interface or of the interfaces menu are not allowed
+ in a single file. -->
+  <interface name="pdg_mutagen" label="PDG Mutagen" icon="MISC_python" showNetworkNavigationBar="false" help_url="">
+    <script><![CDATA[import pdg_mutagen_ui
+#import debug_test_2
+
+def onCreateInterface():
+    interface = pdg_mutagen_ui.MutagenInterface()
+    #interface = debug_test_2.TestInterface()
+    return interface]]></script>
+    <includeInToolbarMenu menu_position="412" create_separator="false"/>
+    <help><![CDATA[]]></help>
+  </interface>
+</pythonPanelDocument>

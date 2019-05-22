@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>SOM Mutagen HTML5 Video Player</title>
+    <meta name="author" content="Adrian Meyer">
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+
+<body>
+
+    <div id="video_container">
+        <!-- Video -->
+        <video autoplay loop id="video_player">
+            <source src="//isilonai/strandsofmind/030_Production/010_Shots/025_LT_CELL_GROWTH/000_RND/010_HOU/OUT/img/lt_cell_growth_previs_h175_v034_am/ffmpeg_montage_p0/lt_cell_growth_previs_h175_v034_am.ffmpeg_montage_p0.webm" type="video/webm" />
+        <p>Your browser does not support the video tag.</p>
+        </video>
+
+        <!-- Video Controls -->
+        <div id="video_controls">
+            <button type="button" id="play_pause" class="play">Play/Pause</button>
+            <input type="range" id="seek_bar" class="slider" value="0">
+        </div>
+    </div>
+
+
+    <script src="ctrl_script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,78 @@
+/*
+author = "Adrian Meyer"
+copyright = "2019 All rights reserved. See LICENSE for more details."
+status = "Prototype"
+*/
+
+
+
+#video_container {
+	width: 100%;
+	height: 100%;	
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+#video_player {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+
+#video_controls {
+	position: fixed; /* does not work in houdini pypanel -> stays absolute */
+	top: 0;
+	left: 0;
+	opacity: 100;
+}
+
+
+#play_pause {
+	-webkit-appearance: none;
+  	appearance: none;
+	background: #3a3a3a;
+	color: #cacaca;
+	border: 0;
+	height: 20px;
+	width: 100px;
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	opacity: 0.5;
+	-webkit-transition: .2s; /* 0.2 seconds transition on hover */
+	transition: opacity .2s;
+}
+
+#play_pause:hover {
+	opacity: 0.9;
+}
+
+#seek_bar {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 500px;
+	height: 20px;
+	position: absolute;
+	top: 8px;
+	left: 115px;
+	background: #3a3a3a;
+	outline: none;
+	opacity: 0.5;
+	-webkit-transition: .2s; /* 0.2 seconds transition on hover */
+	transition: opacity .2s;
+}
+
+#seek_bar:hover {
+	opacity: 0.9;
+}
+
+
+#seek_bar::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 5px;
+	height: 20px;
+	background: #cacaca;
+}

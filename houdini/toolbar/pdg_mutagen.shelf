@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<shelfDocument>
+  <!-- This file contains definitions of shelves, toolbars, and tools.
+ It should not be hand-edited when it is being used by the application.
+ Note, that two definitions of the same element are not allowed in
+ a single file. -->
+
+  <toolshelf name="pdg_mutagen" label="PDG Mutagen">
+    <memberTool name="mtg_reload_mutagen_module"/>
+    <memberTool name="mtg_create_mutagen_setup"/>
+    <memberTool name="mtg_insert_split"/>
+    <memberTool name="mtg_convert_takes"/>
+    <memberTool name="mtg_select_wedge_index"/>
+  </toolshelf>
+
+  <tool name="mtg_reload_mutagen_module" label="Relaod Mutagen PYM" icon="SOP_python">
+    <helpText><![CDATA["""Reload Mutagen Python Modeuls. For developement purposes only."""]]></helpText>
+    <script scriptType="python"><![CDATA[import pdg_mutagen
+reload(pdg_mutagen)
+
+import pdg_mutagen_ui
+reload(pdg_mutagen_ui)]]></script>
+  </tool>
+
+  <tool name="mtg_create_mutagen_setup" label="Mutagen Setup" icon="NETWORKS_top">
+    <helpText><![CDATA["""Creates a PDG Graph Template with basic Wedging Setup, designed to work with the Mutagen Viewer and other Mutagen Tools.
+This includes Wedge, Geo Ropfetch, Image Render Ropfetch, Partition, ImageMagick and FFmpeg TOPs.
+This is intended to be a base template to be further customized. Tool also available from Mutagen Python Panel Interface."""]]></helpText>
+    <script scriptType="python"><![CDATA[import pdg_mutagen
+
+pdg_mutagen.createMutagenSetup()]]></script>
+  </tool>
+
+  <tool name="mtg_convert_takes" label="Convert Takes to Wedge" icon="TOP_wedge">
+    <helpText><![CDATA["""Convert Variations you have set up in the "classical Take style" to a single Wedge TOP that holds all the edited Parameters.
+The Takes itself will be redundant from then on.
+Append additional Wedge TOPs as you like to generate further variation.
+Warning: Depending on number of Takes and edited Parameters this can take quite long (Up to ~3mins, only once. Unfortunately HOM does not provide direct access to take parm values, but you have to iterate over takes, set them and then evaluate). Also loading the UI of the Wedge TOP Node can take a couple of seconds every time you select the wedge Node."""]]></helpText>
+    <script scriptType="python"><![CDATA[import pdg_mutagen
+
+pdg_mutagen.convertTakesToWedgeUI()]]></script>
+  </tool>
+
+  <tool name="mtg_select_wedge_index" label="Select Wedge Index" icon="TOP_topfetch">
+    <helpText><![CDATA["""Manually select Wedge Index (Work Item) in PDG Graph.
+Sets all Parameters according to the Wedge Variation.
+Handy for very complex Graphs with lots of WOrk Items, where manual selection can be hard or impossible."""]]></helpText>
+    <script scriptType="python"><![CDATA[import pdg_mutagen
+
+pdg_mutagen.selectWedgeIndexUI()]]></script>
+  </tool>
+
+  <tool name="mtg_insert_split" label="Split IM Montage" icon="TOP_split">
+    <helpText><![CDATA["""Splits ImageMagick Monatge in two separate Streams.
+Promts to you to choose FFmpeg TOP node first (should be last Node in PDG Chain).
+Assumes PDG Network is based on 'Mutagen Setup' Tool.
+This is handy for very large Wedging Setups with over ~150 Wedge Variations which become unhandy and also ImageMagick Monatge won't work anymore."""]]></helpText>
+    <script scriptType="python"><![CDATA[import pdg_mutagen
+
+pdg_mutagen.insertGraphSplit()]]></script>
+  </tool>
+</shelfDocument>
