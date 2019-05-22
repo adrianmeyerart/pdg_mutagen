@@ -8,8 +8,6 @@ import os
 import pdg_mutagen_ui
 
 
-
-
 #info
 __author__ = "Adrian Meyer"
 __copyright__ = "2019 All rights reserved. See LICENSE for more details."
@@ -28,11 +26,9 @@ def createMutagenSetup():
 	topnet_name = hou_node.name()
 	topnet_path = hou_node.path()
 
-
 	hou_parm = hou_node.parm("topscheduler")
 	hou_parm.set("localscheduler")
 	hou_parent = hou_node
-
 
 	#topnet_glob/localscheduler
 	hou_node = hou_parent.node(hou_parent.path()+"/localscheduler")
@@ -63,8 +59,6 @@ def createMutagenSetup():
 	hou_node.setColor(hou.Color([0, 0, 0]))
 	hou_node.setExpressionLanguage(hou.exprLanguage.Hscript)
 
-
-		
 	
 	#topnet_glob/wedge_root
 	hou_node = hou_parent.createNode("wedge", "wedge_root")
@@ -107,7 +101,6 @@ def createMutagenSetup():
 	hou_node.setColor(hou.Color([0.306, 0.306, 0.306]))
 
 	
-	
 	#topnet_glob/ropfetch_geo
 	hou_node = hou_parent.createNode("ropfetch", "ropfetch_geo")
 	hou_node.move(hou.Vector2(0, -6.14))
@@ -121,7 +114,6 @@ def createMutagenSetup():
 	hou_node.setColor(hou.Color([1, 0.529, 0.624]))
 	
 
-	
 	#topnet_glob/ropfetch_render
 	hou_node = hou_parent.createNode("ropfetch", "ropfetch_render")
 	hou_node.move(hou.Vector2(0, -8.64618))
@@ -133,13 +125,11 @@ def createMutagenSetup():
 	hou_node.setColor(hou.Color([0.624, 0.329, 0.396]))
 
 	
-	
 	#topnet_glob/partitionbyframe
 	hou_node = hou_parent.createNode("partitionbyframe", "partitionbyframe")
 	hou_node.move(hou.Vector2(0, -11.3))
 
 
-	
 	#topnet_glob/im_montage_p0
 	hou_node = hou_parent.createNode("imagemagick", "im_montage_p0")
 	hou_node.move(hou.Vector2(0, -14.16))
@@ -154,12 +144,9 @@ def createMutagenSetup():
 	hou_node.setColor(hou.Color([0.451, 0.369, 0.796]))
 
 	
-	
 	#topnet_glob/waitforall
 	hou_node = hou_parent.createNode("waitforall", "waitforall")
 	hou_node.move(hou.Vector2(0, -17.1))
-
-	
 
 	
 	#topnet_glob/ffmpeg_montage_p0
@@ -183,9 +170,6 @@ def createMutagenSetup():
 
 	hou_node.setSelected(True, clear_all_selected=True)
 
-
-	
-	
 	
 	#topnet_glob/ropnet
 	hou_node = hou_parent.createNode("ropnet", "ropnet")
@@ -332,7 +316,6 @@ def createMutagenSetup():
 	hou_sticky.setColor(hou.Color([0.996, 0.682, 0.682]))
 
 
-
 	#set hou_parent
 	hou_parent = hou.node(hou_parent.path()+"/ropnet")
 
@@ -367,13 +350,11 @@ def createMutagenSetup():
 
 
 
-
 #class to hold PDGGraph data retrieved from setupWizard function
 class PDGGraphObject():
 	def __init__(self, parent=None):
 
 		pdg_mutagen_ui.setupWizard(self)
-
 
 
 
@@ -388,10 +369,8 @@ def insertGraphSplit():
 	#hardcoded to 2 for now
 	num_splits = 2
 
-
 	#analyze PDG Graph and get Nodes into object
 	pdg_graph_obj = PDGGraphObject()
-
 
 	#reassign nodes
 	pdgchain_nodes = pdg_graph_obj._pdgchain_nodes
@@ -414,10 +393,8 @@ def insertGraphSplit():
 	new_split_node.move([0, -2])
 	new_split_node.setInput(0, render_node_pdg)
 
-
 	split_expr = new_split_node.parm("splitexpression")
 	split_expr.setExpression("@wedgenum<"+str((root_wedge_count/num_splits)))
-
 
 
 	#make sure ffmpeg node and image_magick node end with split postfix _p0, _p1
@@ -426,7 +403,6 @@ def insertGraphSplit():
 
 	if not imagemagick_node.name().endswith("_p0"):
 		imagemagick_node.setName(imagemagick_node.name()+"_p0")
-
 
 
 	#copy / paste remaining nodechain
@@ -439,10 +415,6 @@ def insertGraphSplit():
 		#append
 		old_nodes.append(node)
 	
-
-	#print "\nNodes to duplicate to Split Stream:"
-	#print old_nodes
-
 
 
 	new_nodes = hou.copyNodesTo(old_nodes, parent_topnet)
@@ -460,7 +432,6 @@ def insertGraphSplit():
 	old_nodes[-1].setInput(0, new_split_node, 0)
 
 
-
 	print "_"*100
 	print "Finished splitting PDG ImageMagick Montage successfully"
 	print "_"*100
@@ -475,11 +446,8 @@ def insertGraphSplit():
 
 
 
-
-
 #convert takes to wedge ui function
 def convertTakesToWedgeUI():
-
 
 	#create wedge node and add parm setup
 
@@ -522,7 +490,6 @@ def convertTakesToWedgeUI():
 	
 	#call function
 	remove_takes = False
-
 	remove_takes_int = hou.ui.selectFromList(["Keep", "Remove"], default_choices=([0, ]), exclusive=True, message="Keep Takes after Conversion?", title="Convert Takes to Wedge", column_header="Choices", num_visible_rows=2, clear_on_cancel=False, width=100, height=20)[0]
 
 	if remove_takes_int == 1:
@@ -536,10 +503,8 @@ def convertTakesToWedgeUI():
 
 
 
-
 #main non ui function
 def convertTakesToWedge(wedge_node, remove_takes):
-
 
 
 	print "\n\nStarting to convert Takes to TOP Wedge...\n"
@@ -577,8 +542,6 @@ def convertTakesToWedge(wedge_node, remove_takes):
 
 	#check if child takes present
 	if num_takes > 0:
-
-
 		#collect all edited parms in takes
 		takeparm_list = []
 
@@ -596,9 +559,6 @@ def convertTakesToWedge(wedge_node, remove_takes):
 		print "{} edited Parameters found in Takes\n".format(num_takeparms)
 
 
-		
-
-		
 
 		print "\nProcessing all edited Parameters in Takes."
 		print "This might take up to a couple of minutes for very complex setups..."
@@ -619,7 +579,6 @@ def convertTakesToWedge(wedge_node, remove_takes):
 
 		#edit interface wo hide wedge attribute parms for preformance
 
-
 		parm_group = wedge.parmTemplateGroup()
 		attribs_parm_temp = parm_group.find("wedgeattributes")
 		attribs_parm_temp_clone = attribs_parm_temp.clone()
@@ -631,8 +590,6 @@ def convertTakesToWedge(wedge_node, remove_takes):
 		parm_group.append(new_parm_folder)
 
 		wedge.setParmTemplateGroup(parm_group)
-
-
 
 
 
@@ -651,12 +608,9 @@ def convertTakesToWedge(wedge_node, remove_takes):
 			#print takeparm_type
 			#print "Is Tuple: " + str(takeparm_is_tuple)
 			
-			
 			#set
 			parm_name = wedge.parm("name"+str(i))
 			parm_name.set(takeparm.name()+"_"+str(i))
-
-
 
 			
 			parm_exportchannel = wedge.parm("exportchannel"+str(i))
@@ -684,9 +638,7 @@ def convertTakesToWedge(wedge_node, remove_takes):
 			parm_values.set(num_takes)
 			
 			#incr
-			i += 1  
-
-
+			i += 1
 		   
 		
 
@@ -698,7 +650,6 @@ def convertTakesToWedge(wedge_node, remove_takes):
 			take = hou.takes.findTake(takename)
 			#print "Set to Take: " + take.name()
 			hou.takes.setCurrentTake(take)
-			
 			
 			#fill in takeparms again with evalueted values from takes
 			i = 1
@@ -779,12 +730,10 @@ def convertTakesToWedge(wedge_node, remove_takes):
 		print "_"*100
 		print "\n"*2
 
-	
 
 	#exception when no child takes found
 	else:
 		raise Exception("No Child Takes found.")
-
 
 	#reset update mode
 	hou.setUpdateMode(update_mode_set)
@@ -797,13 +746,9 @@ def convertTakesToWedge(wedge_node, remove_takes):
 
 
 
-
-
-
 #select wedge index function
 def selectWedgeIndexUI():
 	
-
 	#get wedge node
 	def _isWedgeNode(node):
 		#top_type_list = [hou.nodeType("Top/wedge"), hou.nodeType("Top/merge"), hou.nodeType("Top/ropfetch")]
@@ -836,9 +781,6 @@ def selectWedgeIndexUI():
 	print "\nTarget Wedge Index: " + target_wdg_idx
 
 
-
-
-
 	pdgnode = node.getPDGNode()
 	#generate static items first to be able to access
 	node.generateStaticItems()
@@ -846,12 +788,10 @@ def selectWedgeIndexUI():
 	work_items = pdgnode.staticWorkItems
 
 
-
 	selectWedgeIndex(target_wdg_idx, node, work_items)
 
 
 	
-
 
 
 
@@ -892,10 +832,6 @@ def selectWedgeIndex(idx, wedge_node, work_items_in):
 
 
 
-
-
-
-
 #function to create new root wedge node from current mutagen viewer selection
 def setupMutationFromMarkedWedges(marked_idx_list, wedge_anchor_node):
 
@@ -906,14 +842,12 @@ def setupMutationFromMarkedWedges(marked_idx_list, wedge_anchor_node):
 	num_wedges = len(idx_list)
 
 
-
 	#get current update mode
 	update_mode_set = hou.updateModeSetting()
 	#set update mode to manual
 	hou.setUpdateMode(hou.updateMode.Manual)
 	#set auto takes on
 	hou.hscript("takeautomode on")
-
 
 
 	#get root take
@@ -930,12 +864,10 @@ def setupMutationFromMarkedWedges(marked_idx_list, wedge_anchor_node):
 	work_items = pdgnode.staticWorkItems
 
 
-
 	#remove all existing takes first
 	takes = roottake.children()
 	for take in takes:
 		take.destroy()
-
 
 
 	#convert wedges to takes

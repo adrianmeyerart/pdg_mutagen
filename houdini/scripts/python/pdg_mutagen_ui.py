@@ -17,8 +17,6 @@ from functools import partial
 import pdg_mutagen
 
 
-
-
 #info
 __author__ = "Adrian Meyer"
 __copyright__ = "2019 All rights reserved. See LICENSE for more details."
@@ -92,17 +90,14 @@ fg_color = "background-color: rgb(58, 58, 58)"
 
 
 
-
 #main interface class / called by Houdini
 class MutagenInterface(QtWidgets.QWidget):
 	def __init__(self, parent=None):
 		super(MutagenInterface, self).__init__(parent)
 
-		
 
 		####initial startup layout            
 		
-
 		#create layout for main QWidget
 		self._layout = QtWidgets.QVBoxLayout()
 		self._layout.setContentsMargins(0,0,0,0)
@@ -145,10 +140,7 @@ class StartupInterface(QtWidgets.QWidget):
 		self.setLayout(layout)
 
 
-
-
 		#startup dialoge
-
 		startup_frame_out = QtWidgets.QFrame(self)
 		startup_frame_out.setGeometry(QtCore.QRect(0, 0, 550, 660))
 		startup_frame_out.setProperty('FGFrameOut', True)
@@ -168,7 +160,6 @@ class StartupInterface(QtWidgets.QWidget):
 		startup_scroll_area.setWidget(startup_frame_out)
 		#startup_scroll_area.setAlignment(QtCore.Qt.AlignCenter)
 
-
 		#add QScrollArea to main layout
 		layout.addWidget(startup_scroll_area)
 
@@ -179,8 +170,6 @@ class StartupInterface(QtWidgets.QWidget):
 		frame_layout.setAlignment(QtCore.Qt.AlignTop)
 		frame_layout.setContentsMargins(50,80,50,80)
 		startup_frame.setLayout(frame_layout)
-
-
 
 
 		
@@ -219,8 +208,6 @@ class StartupInterface(QtWidgets.QWidget):
 
 
 
-
-
 	def _setupWizard_ButtonClicked(self):
 		print "Creating Mutagen PDG Graph Template...\n"
 
@@ -243,8 +230,6 @@ class StartupInterface(QtWidgets.QWidget):
 
 
 
-
-
 #viewer interface class
 class ViewerInterface(QtWidgets.QWidget):
 	def __init__(self, root_interface, parent=None):
@@ -257,17 +242,14 @@ class ViewerInterface(QtWidgets.QWidget):
 		# Set the stylesheet
 		self.setStyleSheet(glob_stylesheet)		
 
-
 		#create layout for main QWidget
 		layout = QtWidgets.QVBoxLayout()
 		layout.setContentsMargins(0,0,0,0)
 		self.setLayout(layout)
 
 
-
 		#call setup wizard to get data from PDG Graph
 		setupWizard(self)
-
 		#continue
 		setupWizardViewer(self)
 
@@ -282,15 +264,13 @@ class ViewerInterface(QtWidgets.QWidget):
 		self._root_if._layout.addWidget(self)
 
 
+		
+
 		####create interface
-
-
 
 		#create QFrame with fixed size as container for image and grid table
 		self._frame = QtWidgets.QWidget()
 		self._frame.setGeometry(QtCore.QRect(0, 0, self._frame_width, self._frame_height))
-
-	
 
 
 		####html webview for video playback
@@ -314,16 +294,13 @@ class ViewerInterface(QtWidgets.QWidget):
 		#set html content
 		self._webview.setHtml(html_out, base_url)
 
-		
-
+	
 
 		####further layout
 
 		#create QScrollArea attached to main QWidget and attach QFrame
 		scroll_area = QtWidgets.QScrollArea(self)
 		scroll_area.setWidget(self._frame)
-
-
 
 
 
@@ -336,8 +313,6 @@ class ViewerInterface(QtWidgets.QWidget):
 		self._grid.setVerticalSpacing(0)
 		#self._grid.setAlignment(QtCore.Qt.AlignLeft)
 
-
-		
 
 		#create cells by iteration and attach to QGridLayout
 		
@@ -375,7 +350,6 @@ class ViewerInterface(QtWidgets.QWidget):
 					
 
 
-		
 
 		#####load marked selection fir grid layout from file and initialize
 		marked_file = self._marked_filepath
@@ -396,8 +370,6 @@ class ViewerInterface(QtWidgets.QWidget):
 
 			print "Initializing UI successfull\n"
 			
-
-
 		
 
 
@@ -432,8 +404,6 @@ class ViewerInterface(QtWidgets.QWidget):
 		#add QScrollArea to main layout
 		layout.addWidget(scroll_area)
 
-
-
 		#refocus webwidget
 		self._webview.activateWindow()
 		self._webview.setFocus()
@@ -445,10 +415,7 @@ class ViewerInterface(QtWidgets.QWidget):
 
 
 
-
 	####global mouse and keyboard events
-
-
 
 	#key press fucntions
 	def keyPressEvent(self, e):
@@ -536,7 +503,6 @@ class ViewerInterface(QtWidgets.QWidget):
 
 
 
-
 	#Wedge Cell function / Button Overlay Cell for Wedge Selection
 	def _wedgeCell(self, cell_idx, *args):
 
@@ -551,7 +517,6 @@ class ViewerInterface(QtWidgets.QWidget):
 		cell_layout.setContentsMargins(0,0,0,0)
 		#cell_layout.setVerticalSpacing(0)
 		cell_frame.setLayout(cell_layout)
-
 
 
 
@@ -595,7 +560,6 @@ class ViewerInterface(QtWidgets.QWidget):
 		#add right click menu / open in explorer / open in rv
 		cell_frame.setContextMenuPolicy(QtCore.Qt.ActionsContextMenu)
 
-
 		
 		open_sequence = QtWidgets.QAction(cell_frame)
 		open_sequence.setText("Open Wedge Sequence in RV")
@@ -613,7 +577,6 @@ class ViewerInterface(QtWidgets.QWidget):
 		
 
 	
-
 
 
 	def _openSequence(self, idx, *args):
@@ -642,12 +605,10 @@ class ViewerInterface(QtWidgets.QWidget):
 
 	
 
-
 	def _openExplorer(self, idx, *args):
 		
 		path = self._render_outpath
 		sender_idx = idx
-
 
 		path_split = path.split(wedge_prefix)
 		path = path_split[0] + wedge_prefix + sender_idx
@@ -674,7 +635,6 @@ class ViewerInterface(QtWidgets.QWidget):
 
 
 	
-
 
 
 	
@@ -715,7 +675,6 @@ class ViewerInterface(QtWidgets.QWidget):
 					print "Wedge Index: " + wdg_idx
 					#print "ID: " + str(work_item_id)
 		
-		
 
 		#reset focus to webview
 		self._webview.activateWindow()
@@ -744,15 +703,11 @@ class ViewerInterface(QtWidgets.QWidget):
 	
 
 	
-
-	
 	def _markButtonClear(self):
 		
 		for i in self._cell_dict.keys():
 			mark_button = self._cell_dict[i].children()[0]
 			mark_button.setChecked(False)
-
-
 
 
 
@@ -788,7 +743,6 @@ class ViewerInterface(QtWidgets.QWidget):
 		with open(self._marked_filepath, "w") as f:
 			f.write(str(wedge_mark_dict))
 			print "Saving successfull\n"
-
 
 
 
@@ -833,10 +787,6 @@ class ViewerInterface(QtWidgets.QWidget):
 
 
 
-
-
-
-
 #setup wizard function to get PDG nodes for pdg input data and wedge selection                
 def setupWizard(self):
 
@@ -847,7 +797,6 @@ def setupWizard(self):
 	print "_"*100
 	print "\n"*2
 	
-
 
 	####initial ui selection
 
@@ -865,20 +814,16 @@ def setupWizard(self):
 		raise Exception("No FFmpeg Node selected.")
 
 
-
 	self._ffmpeg_node = hou.node(ffmpeg_nodepath)
 	print "FFmpeg Node (Root Node): {}".format(self._ffmpeg_node.name())
-
 
 	#for marked saving...
 	ffmpeg_name = self._ffmpeg_node.name()
 	self._marked_filepath = hou.expandString("$HIP")+"/mutagen/view_store/"+ffmpeg_name+"/"+"mutagen_view_store."+ffmpeg_name+".py"
 
 
-
 	#furher analyse graph...
 	self._pdgchain_nodes = self._ffmpeg_node.inputAncestors()
-
 
 
 	#find output wedge node
@@ -894,7 +839,6 @@ def setupWizard(self):
 			self._wedge_root_node = pdgnode
 
 
-	
 
 	#find render or ropfetch node (last appearance in graph)
 	#init
@@ -910,7 +854,6 @@ def setupWizard(self):
 			self._render_outpath = pdg_node.parm("vm_picture").evalAtFrame(0)
 
 			break
-
 
 
 		#if no mantra TOP present, but linked ROPs over ropfetch
@@ -942,11 +885,9 @@ def setupWizard(self):
 	self._render_outpath = os.path.abspath(os.path.join(os.path.dirname(__file__), self._render_outpath))
 	#change back to forward slashes
 	self._render_outpath = self._render_outpath.replace("\\", "/")
-
 	print "Render Output ROP Node: {}".format(self._render_node.name())
 
 		
-
 
 	#find image magick node
 	for pdgnode in self._pdgchain_nodes:
@@ -986,19 +927,13 @@ def setupWizard(self):
 
 
 
-
-
 #setup wizard function continued only when called from mutagen viewer pypanel
 def setupWizardViewer(self):
-
-
 
 	
 	#get wedge index list
 	getWedgeIndexList(self)
 	#print self._wdg_idx_l
-
-
 
 
 	self._num_wedges = len(self._wdg_idx_l)
@@ -1053,7 +988,6 @@ def setupWizardViewer(self):
 	#print geo_str_l
 
 
-
 	
 	####set initial zoom setup
 	self._zoom_factor = 1
@@ -1073,13 +1007,10 @@ def setupWizardViewer(self):
 	print "Cell Height Padding: {}".format(self._cell_frame_padding_v)
 
 
-
 	
 	#tile (tiling if explicitly set in command)
 
 	self._num_total = self._num_wedges_split
-
-
 	self._num_width = 0
 	self._num_height = 0
 
@@ -1145,8 +1076,6 @@ def setupWizardViewer(self):
 	self._fg_color = "background-color: rgb(58, 58, 58)"
 
 
-
-
 	print "_"*100
 	print "PDG Mutagen Setup Wizard Complete"
 	print "_"*100
@@ -1161,10 +1090,8 @@ def setupWizardViewer(self):
 
 
 
-
 #get wedge index list function
 def getWedgeIndexList(self):
-
 
 	#generate static items first to be able to access
 	self._wedge_anchor_node.generateStaticItems()
