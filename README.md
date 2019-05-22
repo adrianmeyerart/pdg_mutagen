@@ -7,8 +7,8 @@ PDG Mutagen
 
 ## About
 **PDG Mutagen** is a toolset designed to efficently and intuitively handle the often large wedge variation counts and data amounts when working with PDG wedging in *©SideFX Houdini*.
+ 
 
-<img src="./img/mutagen_viewer.png" alt="Mutagen Viewer" witdh="882px">
 <br>
 
 #### PDG Mutagen Viewer
@@ -19,9 +19,9 @@ It includes a Python Panel Interface the **Mutagen Viewer**, that allows you to 
 * Mark/label wedge variations you like, store selection
 * **Setup Mutation** tool to generate new base wedge node containing all wedge parameters from marked wedge variations. This can then be used as root to generate further wedge variation based on the settings you liked, by appending further wedge TOPs.
 
- 
+<img src="./img/mutagen_viewer.png" alt="Mutagen Viewer" witdh="882px">
 
-<img src="./img/mutagen_shelf_network.png" alt="Mutagen Shelf / PDG Graph" width="882px">
+
 <br>
 
 #### PDG Mutagen Shelf
@@ -33,6 +33,8 @@ It also includes a **Mutagen Shelf** containing additional utility tools
 * **Convert Takes to Wedges** converts variations you have set up in the "classical take style" to a single wedge TOP that holds all the edited parameters. Append additional wedge TOPs as you like to generate further variation
 * **Select Wedge Index** lets you numerically enter a target wedge index like *0_1_4_6_2* and select it in the PDG graph. This is handy for large wedge counts where visual selection is tedious or impossible
 * **Split IM Montage** splits ImageMagick montage in two separate streams. This is handy for very large wedging setups which become unhandy in a single montage and also ImageMagick concatenation would fail
+
+<img src="./img/mutagen_shelf_network.png" alt="Mutagen Shelf / PDG Graph" width="882px">
 
 <br>
 
