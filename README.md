@@ -8,20 +8,24 @@ PDG Mutagen
 ## About
 **PDG Mutagen** is a toolset designed to efficently and intuitively handle the often large wedge variation counts and data amounts when working with PDG wedging in *©SideFX Houdini*.
 
+<img src="./img/mutagen_viewer.png" alt="Mutagen Viewer" witdh="882px">
 
 It includes a Python Panel Interface the **Mutagen Viewer**, that allows you to display and play back the PDG wedge variations
-* Allows to visually select a specific wedge variation that will then be selected in the PDG Graph as well
-* Right click in wedge variation to open full-size rendered image sequence in RV or File Browser
-* Mark/label wedge variations you like, save the selection
-* **Setup Mutation** Tool to generate new base wedge node containing all wedge parameters from marked wedge variations
+* Allows to visually select a specific wedge variation that will then be selected in the PDG graph as well
+* Right click wedge variation to open full-size rendered image sequence in RV or Filebrowser
+* Mark/label wedge variations you like, store selection
+* **Setup Mutation** tool to generate new base wedge node containing all wedge parameters from marked wedge variations. This can then be used as root to generate further wedge variation based on the settings you liked, by appending further wedge TOPs.
 
 
 
 It also includes a **PDG Mutagen Shelf** containing additional utility tools
+
+<img src="./img/mutagen_shelf_network.png" alt="Mutagen Shelf / PDG Graph" width="882px">
+
 * **Mutagen Setup** creates a PDG graph template with basic wedging setup, designed to work with the **Mutagen Viewer** and other **Mutagen Tools**.
 * **Convert Takes to Wedges** converts variations you have set up in the "classical take style" to a single wedge TOP that holds all the edited parameters. Append additional wedge TOPs as you like to generate further variation
-* **Select Wedge Index** lets you numerically enter a target wedge index like *0_1_4_6_2* and selects it in the PDG graph. This is handy for large wedge counts where visual selection is tedious or impossible
-* **Split IM Montage** splits ImageMagick monatge in two separate streams. This is handy for very large wedging setups which become unhandy in a single montage and also ImageMagick concatenation will fail
+* **Select Wedge Index** lets you numerically enter a target wedge index like *0_1_4_6_2* and select it in the PDG graph. This is handy for large wedge counts where visual selection is tedious or impossible
+* **Split IM Montage** splits ImageMagick montage in two separate streams. This is handy for very large wedging setups which become unhandy in a single montage and also ImageMagick concatenation would fail
 
 <br>
 
@@ -55,3 +59,13 @@ It may contain bugs and the code is not fully cleaned up. Feel free to customize
 * [Entagma PDG for Design - Learning Ressources](https://www.sidefx.com/learn/collections/pdg-for-design/)
 
 <br>
+
+##Future Developement
+The intial intention was to create a "smart mutation" tool that will set up the PDG network based on the marked wedge variations automatically.
+Providing the user with parameters like "Number of New Variations", "Variation Spread", "Linear or Random Mode" and so on.
+Due to time constraints this is postponed indefinitely but may be continued in the future.
+
+<br>
+
+##Thanks
+* [Entagma](http://www.entagma.com/) - **PDG for Design Work** series inspired to create the toolset
