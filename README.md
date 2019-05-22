@@ -9,6 +9,9 @@ PDG Mutagen
 **PDG Mutagen** is a toolset designed to efficently and intuitively handle the often large wedge variation counts and data amounts when working with PDG wedging in *©SideFX Houdini*.
 
 <img src="./img/mutagen_viewer.png" alt="Mutagen Viewer" witdh="882px">
+<br>
+
+#### PDG Mutagen Viewer
 
 It includes a Python Panel Interface the **Mutagen Viewer**, that allows you to display and play back the PDG wedge variations
 * Allows to visually select a specific wedge variation that will then be selected in the PDG graph as well
@@ -19,8 +22,11 @@ It includes a Python Panel Interface the **Mutagen Viewer**, that allows you to 
  
 
 <img src="./img/mutagen_shelf_network.png" alt="Mutagen Shelf / PDG Graph" width="882px">
+<br>
 
-It also includes a **PDG Mutagen Shelf** containing additional utility tools
+#### PDG Mutagen Shelf
+
+It also includes a **Mutagen Shelf** containing additional utility tools
 
 
 * **Mutagen Setup** creates a PDG graph template with basic wedging setup, designed to work with the **Mutagen Viewer** and other **Mutagen Tools**.
@@ -69,4 +75,4 @@ Due to time constraints this is postponed indefinitely but may be continued in t
 <br>
 
 ## Thanks
-* [Entagma](http://www.entagma.com/) - **PDG for Design Work** series inspired to create the toolset
+* [Entagma](http://www.entagma.com/) - **PDG for Design Work** series inspired me to create the toolset
