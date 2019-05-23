@@ -6,10 +6,16 @@ PDG Mutagen
 <br>
 
 ## About
-**PDG Mutagen** is a toolset designed to efficently and intuitively handle the often large wedge variation counts and data amounts when working with PDG wedging in *©SideFX Houdini*.
+**PDG Mutagen** is a toolset designed to efficiently and intuitively handle the often large wedge variation counts and data amounts when working with PDG wedging in *©SideFX Houdini*.
  
+<br>
+
+## Videos
+
+* [![PDG Mutagen Walktrough Tutorial](img/video_cover.png)](https://vimeo.com/adrianmeyer/pdgmutagen)
 
 <br>
+
 
 #### PDG Mutagen Viewer
 
@@ -43,13 +49,6 @@ It also includes a **Mutagen Shelf** containing additional utility tools
 It may contain bugs and the code is not fully cleaned up. Feel free to customize and enhance to your needs.
 
 *Compatible with **Houdini 17.5.x | Tested with 17.5.299***
-
-<br>
-
-## Videos
-* [![PDG Mutagen Demo](img/xxx.jpg)](https://www.)
-
-* [![PDG Mutagen Walktrough Tutorial](img/xxx.jpg)](https://www.)
 
 <br>
 
