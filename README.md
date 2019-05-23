@@ -40,7 +40,7 @@ It also includes a **Mutagen Shelf** containing additional utility tools
 
 ### Code State | Bugs | Compatibility
 **PDG Mutagen** is in prototype stage and for experimental use.
-It may contain bugs and the code is not fully cleaned up. Feel free to customize to your needs.
+It may contain bugs and the code is not fully cleaned up. Feel free to customize and enhance to your needs.
 
 *Compatible with **Houdini 17.5.x | Tested with 17.5.299***
 
@@ -48,7 +48,7 @@ It may contain bugs and the code is not fully cleaned up. Feel free to customize
 
 ## Videos
 * [![PDG Mutagen Demo](img/xxx.jpg)](https://www.)
- 
+
 * [![PDG Mutagen Walktrough Tutorial](img/xxx.jpg)](https://www.)
 
 <br>
@@ -72,10 +72,21 @@ It may contain bugs and the code is not fully cleaned up. Feel free to customize
 
 ## Future Developement
 The intial intention was to create a "smart mutation" tool that will set up the PDG network based on the marked wedge variations automatically.
+Hence the name Mutagen, "Mutation Generator".
 Providing the user with parameters like "Number of New Variations", "Variation Spread", "Linear or Random Mode" and so on.
-Due to time constraints this is postponed indefinitely but may be continued in the future.
+Due to time constraints this is unfortunately postponed indefinitely but may be continued in the future.
+
+<br>
+
+## Implementation
+Most of the tool is written in *Python 2.7* and *PySide2*, running in the native Houdini Python environment.
+The video playback is actually handled by a *HTML5* webpage embedded into *PySide2* with a *QWebEngineWidget*, getting controlled by *JavaScript*.
+This is done because the Houdini Python does not ship with the *QtMultimedia Module* (trying to import it from an external Python installation or even *PyQt5* failed), and it might have been hard to get realtime video playback of sometimes 2-6K video with other approaches. This is also the reason why the buttons in the Python Panel interface are actually PySide Widgets, overlayed on top of the HTML page, playing back one big single video. Realtime performance was a more important concideration than flexibility or cleanness of implementation.
+The video format must be *WebM* or *Ogg* and not *H264* to be played back in Houdini due to licensing reasons.
 
 <br>
 
 ## Thanks
 * [Entagma](http://www.entagma.com/) - **PDG for Design Work** series inspired me to create the toolset
+
+<br>
