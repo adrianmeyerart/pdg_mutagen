@@ -12,7 +12,7 @@ PDG Mutagen
 
 ## Videos
 
-* [![PDG Mutagen Walktrough Tutorial](img/video_cover.png)](https://vimeo.com/adrianmeyer/pdgmutagen)
+[![PDG Mutagen Walktrough Tutorial](img/video_cover.png)](https://vimeo.com/adrianmeyer/pdgmutagen)
 
 <br>
 
@@ -63,11 +63,6 @@ It may contain bugs and the code is not fully cleaned up. Feel free to customize
 
 <br>
 
-## Resources
-* [SideFX Pipeline PDG  - Learning Ressources](https://www.sidefx.com/learn/pipeline-pdg/)
-* [Entagma PDG for Design - Learning Ressources](https://www.sidefx.com/learn/collections/pdg-for-design/)
-
-<br>
 
 ## Future Developement
 The intial intention was to create a "smart mutation" tool that will set up the PDG network based on the marked wedge variations automatically.
@@ -82,6 +77,12 @@ Most of the tool is written in *Python 2.7* and *PySide2*, running in the native
 The video playback is actually handled by a *HTML5* webpage embedded into *PySide2* with a *QWebEngineWidget*, getting controlled by *JavaScript*.
 This is done because the Houdini Python does not ship with the *QtMultimedia Module* (trying to import it from an external Python installation or even *PyQt5* failed), and it might have been hard to get realtime video playback of sometimes 2-6K video with other approaches. This is also the reason why the buttons in the Python Panel interface are actually PySide Widgets, overlayed on top of the HTML page, playing back one big single video. Realtime performance was a more important concideration than flexibility or cleanness of implementation.
 The video format must be *WebM* or *Ogg* and not *H264* to be played back in Houdini due to licensing reasons.
+
+<br>
+
+## Resources
+* [SideFX Pipeline PDG  - Learning Ressources](https://www.sidefx.com/learn/pipeline-pdg/)
+* [Entagma PDG for Design - Learning Ressources](https://www.sidefx.com/learn/collections/pdg-for-design/)
 
 <br>
 
