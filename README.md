@@ -17,7 +17,7 @@ It includes a Python Panel Interface the **Mutagen Viewer**, that allows you to 
 * Allows to visually select a specific wedge variation that will then be selected in the PDG graph as well
 * Right click wedge variation to open full-size rendered image sequence in RV or Filebrowser
 * Mark/label wedge variations you like, store selection
-* **Setup Mutation** tool to generate new base wedge node containing all wedge parameters from marked wedge variations. This can then be used as root to generate further wedge variation based on the settings you liked, by appending further wedge TOPs.
+* **Setup Mutation** tool to generate new base wedge node containing all wedge parameters from marked wedge variations. This can then be used as root to generate further wedge variations based on the settings you liked, by appending further wedge TOPs
 
 <img src="./img/mutagen_viewer.png" alt="Mutagen Viewer" witdh="882px">
 
@@ -56,7 +56,7 @@ It may contain bugs and the code is not fully cleaned up. Feel free to customize
 ## Installation
 * Clone repository. Add path to repository into **HOUDINI_PATH** environment variable (e.g. in *houdini.env* file)
     ```
-    HOUDINI_PATH = &;C:/Users/ameyer/Documents/git/pdg_mutagen/
+    HOUDINI_PATH = &;C:/Users/ameyer/Documents/git/pdg_mutagen/houdini
     ```
 * Add **PDG Mutagen** shelf to Houdini shelfes
 
