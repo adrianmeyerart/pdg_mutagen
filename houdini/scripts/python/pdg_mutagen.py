@@ -833,13 +833,25 @@ def selectWedgeIndex(idx, wedge_node, work_items_in):
 
 
 #function to create new root wedge node from current mutagen viewer selection
-def setupMutationFromMarkedWedges(marked_idx_list, wedge_anchor_node):
+def setupMutationFromMarkedWedges(marked_idx_list, wedge_anchor_node, mode):
 
 	print "\n\nSetup Starting...\n"
 	
 	idx_list = marked_idx_list
 	wedge_node = wedge_anchor_node
 	num_wedges = len(idx_list)
+
+	setup_mode = mode
+
+
+	#print mode
+	if setup_mode == 0:
+		print "Mode: Convert to Takes (del. existing Takes)\n"
+	elif setup_mode == 1:
+		print "Mode: Convert to Takes (keep existing Takes)\n"
+	elif setup_mode == 2:
+		print "Mode: Convert to TOP Wedge (del. existing Takes)\n"
+
 
 
 	#get current update mode
@@ -864,10 +876,12 @@ def setupMutationFromMarkedWedges(marked_idx_list, wedge_anchor_node):
 	work_items = pdgnode.staticWorkItems
 
 
-	#remove all existing takes first
-	takes = roottake.children()
-	for take in takes:
-		take.destroy()
+	if setup_mode == 0 or setup_mode == 2:
+		#remove all existing takes first
+		takes = roottake.children()
+		for take in takes:
+			take.destroy()
+
 
 
 	#convert wedges to takes
@@ -890,14 +904,20 @@ def setupMutationFromMarkedWedges(marked_idx_list, wedge_anchor_node):
 	print "\nSuccessfully converted Wedges to Takes\n"
 
 
-	#create new wedge node in same Topnet as wedge_anchor_node
-	topnet = wedge_node.parent()
-	new_wedge_node = topnet.createNode("wedge", "wedge_base_from_marked")
+	
 
-	new_wedge_node.setPosition(wedge_node.position())
-	new_wedge_node.move([-5, 0])
-	#new_wedge_node.setSelected(1, clear_all_selected=True)
+	#if mode is Convert to TOP Wedge
+	if setup_mode == 2:
+
+		#create new wedge node in same Topnet as wedge_anchor_node
+		topnet = wedge_node.parent()
+		new_wedge_node = topnet.createNode("wedge", "wedge_base_from_marked")
+
+		new_wedge_node.setPosition(wedge_node.position())
+		new_wedge_node.move([-5, 0])
+		#new_wedge_node.setSelected(1, clear_all_selected=True)
+
+		remove_takes = True
 
 
-	remove_takes = True
-	convertTakesToWedge(new_wedge_node, remove_takes)
+		convertTakesToWedge(new_wedge_node, remove_takes)

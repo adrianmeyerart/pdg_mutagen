@@ -752,6 +752,13 @@ class ViewerInterface(QtWidgets.QWidget):
 
 	def _startMutationFromMarkedWedges(self):
 
+
+		mode = hou.ui.selectFromList(["Convert to Takes (del. existing Takes)", "Convert to Takes (keep existing Takes)", "Convert to TOP Wedge (del. existing Takes)"], default_choices=([0]), exclusive=True, message="Please choose how to convert Marked Wedges", title="Conversion Mode", column_header="Choices", num_visible_rows=3, clear_on_cancel=True, width=400, height=180)
+		if mode == ():
+			raise Exception("Cancelled.")
+
+		mode = mode[0]
+
 		print "\nSetting up new Mutation PDG Graph from marked Wedges...\n"
 
 		marked_idx_list = []
@@ -769,7 +776,7 @@ class ViewerInterface(QtWidgets.QWidget):
 			print "List of Wedges to be used:"
 			print marked_idx_list
 
-			pdg_mutagen.setupMutationFromMarkedWedges(marked_idx_list, self._wedge_anchor_node)
+			pdg_mutagen.setupMutationFromMarkedWedges(marked_idx_list, self._wedge_anchor_node, mode)
 
 
 
@@ -1095,29 +1102,35 @@ def getWedgeIndexList(self):
 
 	#generate static items first to be able to access
 	self._wedge_anchor_node.generateStaticItems()
-	time.sleep(1)
+	print "Generating Static Work Items..."
+	time.sleep(3)
 
-	self._wedge_anchor_node_pdg = self._wedge_anchor_node.getPDGNode()
-	self._work_items = self._wedge_anchor_node_pdg.staticWorkItems
+	try:
+		self._wedge_anchor_node_pdg = self._wedge_anchor_node.getPDGNode()
+		self._work_items = self._wedge_anchor_node_pdg.staticWorkItems
 
 
-	self._wdg_idx_l = []
-	#self._wdg_id_l = []
+		self._wdg_idx_l = []
+		#self._wdg_id_l = []
 
-	for work_item in self._work_items:
+		for work_item in self._work_items:
 
-		#work_item_id = work_item.id
-		#self._wdg_id_l.append( work_item_id)
+			#work_item_id = work_item.id
+			#self._wdg_id_l.append( work_item_id)
 
-		wedgenum_l = pdg.intDataArray(work_item, "wedgenum")            
-		wdg_idx = ""
-		for wedgenum in wedgenum_l:
-			wdg_idx += "_" + str(wedgenum)   
-		wdg_idx = wdg_idx[1:]
+			wedgenum_l = pdg.intDataArray(work_item, "wedgenum")            
+			wdg_idx = ""
+			for wedgenum in wedgenum_l:
+				wdg_idx += "_" + str(wedgenum)   
+			wdg_idx = wdg_idx[1:]
+			
+			self._wdg_idx_l.append(wdg_idx)
+			
 		
-		self._wdg_idx_l.append(wdg_idx)
-		
-	
-	#print self._wdg_id_l
-	#print self._wdg_idx_l
-	#return self._wdg_idx_l
+		#print self._wdg_id_l
+		#print self._wdg_idx_l
+		#return self._wdg_idx_l
+
+	except Exception as e:
+		print e
+		print "\nStatic Work Items could not be generated.\nPlease right click 'Generate Node' on last Wedge Node in chain and initialize manually.\nThis only has to be done once after opening Scene. This is a current Limitation.\n"
