@@ -1,5 +1,5 @@
 /*
-author = "Adrian Meyer"
+author = "Adrian Meyer @Animationsinstitut Filmakademie Baden-Württemberg"
 copyright = "2019 All rights reserved. See LICENSE for more details."
 status = "Prototype"
 */

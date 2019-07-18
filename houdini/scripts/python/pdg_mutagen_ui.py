@@ -18,7 +18,7 @@ import pdg_mutagen
 
 
 #info
-__author__ = "Adrian Meyer"
+__author__ = "Adrian Meyer @Animationsinstitut Filmakademie Baden-Württemberg"
 __copyright__ = "2019 All rights reserved. See LICENSE for more details."
 __status__ = "Prototype"
 

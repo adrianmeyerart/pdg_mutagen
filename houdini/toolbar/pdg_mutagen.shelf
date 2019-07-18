@@ -10,6 +10,7 @@
     <memberTool name="mtg_create_mutagen_setup"/>
     <memberTool name="mtg_insert_split"/>
     <memberTool name="mtg_convert_takes"/>
+    <memberTool name="mtg_setup_mutation_from_wedges"/>
     <memberTool name="mtg_select_wedge_index"/>
   </toolshelf>
 
@@ -58,5 +59,11 @@ This is handy for very large Wedging Setups with over ~150 Wedge Variations whic
     <script scriptType="python"><![CDATA[import pdg_mutagen
 
 pdg_mutagen.insertGraphSplit()]]></script>
+  </tool>
+
+  <tool name="mtg_setup_mutation_from_wedges" label="Mutation from Wedges" icon="TOP_wedge">
+    <script scriptType="python"><![CDATA[import pdg_mutagen
+
+pdg_mutagen.setupMutationFromMarkedWedgesUI()]]></script>
   </tool>
 </shelfDocument>

@@ -7,6 +7,7 @@ PDG Mutagen
 
 ## About
 **PDG Mutagen** is a toolset designed to efficiently and intuitively handle the often large wedge variation counts and data amounts when working with PDG wedging in *©SideFX Houdini*.
+PDG Mutagen was developed during my studies at Animationinstitut at Filmakademie Baden-Württemberg in the course Animation & Visual Effects.
  
 <br>
 
@@ -83,6 +84,13 @@ The video format must be *WebM* or *Ogg* and not *H264* to be played back in Hou
 ## Resources
 * [SideFX Pipeline PDG  - Learning Ressources](https://www.sidefx.com/learn/pipeline-pdg/)
 * [Entagma PDG for Design - Learning Ressources](https://www.sidefx.com/learn/collections/pdg-for-design/)
+
+<br>
+
+## Credits
+* PDG Mutagen was developed during my studies at Animationinstitut at Filmakademie Baden-Württemberg in the course Animation & Visual Effects.
+https://animationsinstitut.de/
+https://www.filmakademie.de/
 
 <br>
 

@@ -9,7 +9,7 @@ import pdg_mutagen_ui
 
 
 #info
-__author__ = "Adrian Meyer"
+__author__ = "Adrian Meyer @Animationsinstitut Filmakademie Baden-Württemberg"
 __copyright__ = "2019 All rights reserved. See LICENSE for more details."
 __status__ = "Prototype"
 
@@ -825,6 +825,30 @@ def selectWedgeIndex(idx, wedge_node, work_items_in):
 			#print "ID: " + str(work_item_id)
 			
 		
+
+
+
+
+#function to create new root wedge node from Houdini UI Shelf
+def setupMutationFromMarkedWedgesUI():
+
+	try:
+		anchor_node = hou.selectedNodes()[-1]
+		if anchor_node.type() != hou.nodeType("Top/wedge"):
+			raise Exception("No Wedge Node selected.")
+	except:
+		print "No Wedge Node selected."
+
+
+	wedge_sel_str = hou.ui.readInput("Enter Wedge Index List, i.e. '0_1,3_0,4_1'")[1]
+	wedge_sel_list = wedge_sel_str.split(",")
+
+	mode = hou.ui.selectFromList(["Convert to Takes (del. existing Takes)", "Convert to Takes (keep existing Takes)", "Convert to TOP Wedge (del. existing Takes)"], default_choices=([0]), exclusive=True, message="Please choose how to convert Marked Wedges", title="Conversion Mode", column_header="Choices", num_visible_rows=3, clear_on_cancel=True, width=400, height=180)
+	if mode == ():
+		raise Exception("Cancelled.")
+	mode = mode[0]
+
+	setupMutationFromMarkedWedges(wedge_sel_list, anchor_node, mode)
 
 
 
