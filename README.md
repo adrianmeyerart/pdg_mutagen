@@ -89,8 +89,8 @@ The video format must be *WebM* or *Ogg* and not *H264* to be played back in Hou
 
 ## Credits
 * PDG Mutagen was developed during my studies at Animationinstitut at Filmakademie Baden-Württemberg in the course Animation & Visual Effects.
-https://animationsinstitut.de/
-https://www.filmakademie.de/
+* https://animationsinstitut.de/
+* https://www.filmakademie.de/
 
 <br>
 
